@@ -1,19 +1,26 @@
 import { useState } from 'react'
-import React from "react";
-
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
 import './App.css'
+import { CreateTodo } from './components/Createtodo'
+import { Todos } from './components/Todo'
 
+// useEffect hook
+function App() {
+  const [todos, setTodos] = useState([]);
 
-const Counter = () => {
-    const [count,setCount] =  useState(0)
+  // fetch("http://localhost:3000/todos")
+  //   .then(async function(res) {
+  //     const json = await res.json();
+  //     setTodos(json.todos);
+  //   })
 
-    return (
-      <div>
-        <p> Count Component - {count} </p>
-       <h5> Number is {count % 2 == 0 ? "even": "odd"} </h5>
-          <button onClick ={() => setCount(count+1)}> Increment</button>
-          <button onClick ={() => setCount(count-1)}> Decrement</button>
-      </div>
-    )
-  }
-  export default Counter;
+  return (
+    <div>
+      <CreateTodo></CreateTodo>
+      <Todos todos={todos}></Todos>
+    </div>
+  )
+}
+
+export default App
